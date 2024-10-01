@@ -6,8 +6,7 @@
         mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="450"
         Width="600" Height="450"
         x:Class="NamuDarbas.Views.OmoDesnis"
-        Title="OmoDesnis"
-        x:DataType="vm:OmoDesnioView">
+        Title="OmoDesnis">
     <Grid RowDefinitions="Auto, *, Auto">
         <!-- Virsutine dalis -->
         <Grid Grid.Row="0"
