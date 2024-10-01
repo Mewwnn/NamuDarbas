@@ -12,10 +12,12 @@ namespace NamuDarbas.Views
     public partial class OmoDesnis : Window
     {
         private static int SkaiciavimoOperacijos;
+        
 
         static OmoDesnis()
         {
             SkaiciavimoOperacijos = 0;
+            System.Console.WriteLine("Statinis konstruktorius pakviestas");
         }
         public OmoDesnis()
         {
@@ -24,7 +26,7 @@ namespace NamuDarbas.Views
 
         ~OmoDesnis()
         {
-            System.Console.WriteLine("Dekonstruktorius pradejo darba");
+            
         }
 
         private void PaspaustasSkaiciuoti(object sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -97,7 +99,7 @@ namespace NamuDarbas.Views
                 }
             }
             System.Console.WriteLine($"Buvo atliktos: {SkaiciavimoOperacijos} skaičiavimo operacijos");
-
+            
         }
     }
 }

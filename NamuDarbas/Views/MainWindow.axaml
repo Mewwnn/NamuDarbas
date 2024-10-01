@@ -80,7 +80,7 @@
                   RowDefinitions="*, *">
                 <Label Margin="10"></Label>
                 <StackPanel Grid.Row="1" Grid.Column="0">
-                    <Button Margin="10" Foreground="Black">IDK KA CIA DARAU</Button>
+                    <Button Margin="10" Foreground="Black" Click="Binary">BIN, OCT, DEC, HEX</Button>
                     <Button Margin="10" Foreground="Black">IDK KA CIA DARAU</Button>
                     <Button Margin="10" Foreground="Black">IDK KA CIA DARAU</Button>
                     <Button Margin="10" Foreground="Black">IDK KA CIA DARAU</Button>

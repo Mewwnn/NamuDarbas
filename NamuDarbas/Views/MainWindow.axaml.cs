@@ -14,4 +14,10 @@ public partial class MainWindow : Window
         var newWindow = new OmoDesnis();
         newWindow.Show();
     }
+
+    private void Binary(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        var newWindow = new Binary();
+        newWindow.Show();
+    }
 }

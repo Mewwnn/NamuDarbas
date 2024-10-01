@@ -3,6 +3,7 @@
   <component name="AvaloniaProject">
     <option name="projectPerEditor">
       <map>
+        <entry key="NamuDarbas/Views/Binary.axaml" value="NamuDarbas/NamuDarbas.csproj" />
         <entry key="NamuDarbas/Views/MainWindow.axaml" value="NamuDarbas/NamuDarbas.csproj" />
         <entry key="NamuDarbas/Views/OmoDesnis.axaml" value="NamuDarbas/NamuDarbas.csproj" />
       </map>

@@ -70,3 +70,4 @@
 /home/dovydas-pc/RiderProjects/NamuDarbas/NamuDarbas/bin/Debug/net8.0/ReactiveUI.dll
 /home/dovydas-pc/RiderProjects/NamuDarbas/NamuDarbas/bin/Debug/net8.0/Splat.dll
 /home/dovydas-pc/RiderProjects/NamuDarbas/NamuDarbas/bin/Debug/net8.0/System.Reactive.dll
+/home/dovydas-pc/RiderProjects/NamuDarbas/NamuDarbas/obj/Debug/net8.0/NamuDarbas.sourcelink.json
