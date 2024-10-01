@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="com.obiscr.chatgpt.settings.EasyCodeState">
+    <option name="projectFiles" value="$PROJECT_DIR$/NamuDarbas/bin/Debug/net8.0/NamuDarbas.deps.json;/home/dovydas-pc/RiderProjects/NamuDarbas/NamuDarbas/bin/Debug/net8.0/NamuDarbas.runtimeconfig.json;/home/dovydas-pc/RiderProjects/NamuDarbas/NamuDarbas/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs;/home/dovydas-pc/RiderProjects/NamuDarbas/NamuDarbas/obj/Debug/net8.0/NamuDarbas.AssemblyInfo.cs;/home/dovydas-pc/RiderProjects/NamuDarbas/NamuDarbas/obj/NamuDarbas.csproj.nuget.dgspec.json;/home/dovydas-pc/RiderProjects/NamuDarbas/NamuDarbas/obj/project.assets.json;/home/dovydas-pc/RiderProjects/NamuDarbas/NamuDarbas/obj/project.packagespec.json;/home/dovydas-pc/RiderProjects/NamuDarbas/NamuDarbas/ViewModels/MainWindowViewModel.cs;/home/dovydas-pc/RiderProjects/NamuDarbas/NamuDarbas/ViewModels/ViewModelBase.cs;/home/dovydas-pc/RiderProjects/NamuDarbas/NamuDarbas/Views/MainWindow.axaml.cs;/home/dovydas-pc/RiderProjects/NamuDarbas/NamuDarbas/App.axaml.cs;/home/dovydas-pc/RiderProjects/NamuDarbas/NamuDarbas/Program.cs;/home/dovydas-pc/RiderProjects/NamuDarbas/NamuDarbas/ViewLocator.cs" />
+  </component>
+</project>

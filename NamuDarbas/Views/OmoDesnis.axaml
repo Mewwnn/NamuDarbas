@@ -1,0 +1,95 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:NamuDarbas.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="450"
+        Width="600" Height="450"
+        x:Class="NamuDarbas.Views.OmoDesnis"
+        Title="OmoDesnis"
+        x:DataType="vm:OmoDesnioView">
+    <Grid RowDefinitions="Auto, *, Auto">
+        <!-- Virsutine dalis -->
+        <Grid Grid.Row="0"
+              Background="LightGray"
+              Height="30"
+              ColumnDefinitions="Auto, Auto, *, Auto, Auto">
+            <Rectangle Grid.Column="0"
+                       Fill="DodgerBlue"
+                       Width="30" />
+
+            <Rectangle Grid.Column="1"
+                       Fill="Blue"
+                       Width="30" />
+
+            <StackPanel Grid.Column="2"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                <Label FontWeight="Black" Foreground="Black">Omo dėsnis</Label>
+            </StackPanel>
+
+            <Rectangle Grid.Column="3"
+                       Fill="LightBlue"
+                       Width="30" />
+
+            <Rectangle Grid.Column="4"
+                       Fill="DodgerBlue"
+                       Width="30" />
+
+        </Grid>
+        <!-- Pagrindine dalis -->
+        <Grid Grid.Row="1"
+              ColumnDefinitions="*, *"
+              Background="DarkGray"
+              ShowGridLines="False">
+            <StackPanel Grid.Column="0" Spacing="10" >
+               
+                <!-- Height="30" Width="230" Margin="25" -->
+                <TextBlock HorizontalAlignment="Center" Margin="0 9 0 0" Foreground="Black">Varza(R)</TextBlock>
+                <TextBox Name="Varza" Height="30" Width="230" Watermark="Ω"></TextBox>
+                <TextBlock HorizontalAlignment="Center" Foreground="Black">Itampa(U)</TextBlock>
+                <TextBox Name="Itampa" Height="30" Width="230" Watermark="V"></TextBox>
+                <TextBlock HorizontalAlignment="Center" Foreground="Black">Srove(I)</TextBlock>
+                <TextBox Name="Srove" Height="30" Width="230"  Watermark="A"></TextBox>
+               
+                <Button  Name="Skaiciuoti" Click="PaspaustasSkaiciuoti" Height="30" Width="100" Margin="165 28 5 5" Foreground="Black">Skaičiuoti</Button>
+                
+                <TextBlock HorizontalAlignment="Center" Margin="290 50 0 0" Foreground="Black">Vienu metu gali būti įrašytos tik 2 reikšmės.</TextBlock>
+            </StackPanel>
+            
+            <StackPanel Grid.Column="1" Spacing="10">
+                <TextBlock HorizontalAlignment="Center" Margin="0 9 0 0" Foreground="Black">Apskaičiuota Varža</TextBlock>
+                <TextBox IsReadOnly="True" Height="30" Width="230" Name="ApskaiciuotasR"></TextBox>
+                <TextBlock HorizontalAlignment="Center" Foreground="Black">Apskaičiuota Itampa</TextBlock>
+                <TextBox IsReadOnly="True" Height="30" Width="230" Name="ApskaiciuotasV"></TextBox>
+                <TextBlock HorizontalAlignment="Center" Foreground="Black">Apskaičiuota Srove</TextBlock>
+                <TextBox IsReadOnly="True" Height="30" Width="230" Name="ApskaiciuotasI"></TextBox>
+                <TextBlock HorizontalAlignment="Center" Foreground="Black">Apskaičiuota Galia</TextBlock>
+                <TextBox IsReadOnly="True" Height="30" Width="230" Name="ApskaiciuotasP"></TextBox>
+            </StackPanel>
+
+        </Grid>
+        <!-- Apatine dalis -->
+        <Grid Grid.Row="2" Background="Gray" Height="25" ColumnDefinitions="Auto, Auto, *, Auto, Auto">
+            <Rectangle  Grid.Column="0"
+                   Fill="DodgerBlue"
+                   Width="30" />
+
+            <Rectangle Grid.Row="2" Grid.Column="1"
+                   Fill="Blue"
+                   Width="30" />
+            <Label Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="Black"> Programos autorius: Dovydas Araminas</Label>
+            <Rectangle Grid.Column="3"
+                       Fill="LightBlue"
+                       Width="30" />    
+
+            <Rectangle Grid.Column="4"
+                       Fill="DodgerBlue"
+                       Width="30" />
+            </Grid>
+    
+    </Grid>  
+    
+    
+    
+</Window>
