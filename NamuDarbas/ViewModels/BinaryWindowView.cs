@@ -1,15 +1,10 @@
-using Avalonia;
-using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Markup.Xaml;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Runtime.CompilerServices;
-using Avalonia.Markup.Xaml.MarkupExtensions;
 
 namespace NamuDarbas.ViewModels;
-
 
 public class BinaryWindowView : INotifyPropertyChanged
 {
@@ -17,7 +12,7 @@ public class BinaryWindowView : INotifyPropertyChanged
     private string _octVerte;
     private string _decVerte;
     private string _hexVerte;
-
+    
     public string BinVerte
     {
         get => _binVerte;
