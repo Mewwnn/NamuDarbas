@@ -1,0 +1,79 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="450"
+        Width="600" Height="450"
+        x:Class="NamuDarbas.Views.ASCII"
+        Title="ASCII">
+        <Grid RowDefinitions="Auto, *, Auto">
+        <!-- Virsutine dalis -->
+        <Grid Grid.Row="0"
+              Background="LightGray"
+              Height="30"
+              ColumnDefinitions="Auto, Auto, *, Auto, Auto">
+            <Rectangle Grid.Column="0"
+                       Fill="DodgerBlue"
+                       Width="30" />
+
+            <Rectangle Grid.Column="1"
+                       Fill="Blue"
+                       Width="30" />
+
+            <StackPanel Grid.Column="2"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                <Label FontWeight="Black" Foreground="Black">ASCII Konverteris</Label>
+            </StackPanel>
+
+            <Rectangle Grid.Column="3"
+                       Fill="LightBlue"
+                       Width="30" />
+
+            <Rectangle Grid.Column="4"
+                       Fill="DodgerBlue"
+                       Width="30" />
+
+        </Grid>
+        <!-- Pagrindine dalis -->
+        <Grid Grid.Row="1"
+              ColumnDefinitions="*, *"
+              Background="DarkGray"
+              ShowGridLines="False">
+            <StackPanel Grid.Column="0" Spacing="10" >
+                <TextBlock Foreground="Black" Text="Konvertavimo Režimas:" Margin=" 15 20 0  0" />
+                <CheckBox  Foreground="Black" Name="Pasirinkimas" Content="ASCII to Binary" Checked="PakeistiRezima" Unchecked="PakeistiRezima" Margin=" 15 0 0  0" />
+        
+                <TextBlock Foreground="Black" Name="IvedimoPavadinimas" Text="Iveskite ASCII arba Binary:" Margin="15 0 0 0" />
+                <TextBox Name="Ivedimas" MinHeight="70" MinWidth="500" Margin="110 0 0,5" TextWrapping="Wrap" />
+        
+                <Button Foreground="Black" Content="Konvertuoti" Click="Konvertuoti" Margin="12 0 0 0" Width="100" />
+
+                <TextBlock Foreground="Black" Text="Rezultatas:" Margin="15,10,0,0" />
+                <TextBox Name="Isvedimas" MinHeight="100" IsReadOnly="True" MinWidth="500" Margin="110,0,0,0" TextWrapping="Wrap"/>
+               
+            </StackPanel>
+            
+
+        </Grid>
+        <!-- Apatine dalis -->
+        <Grid Grid.Row="2" Background="Gray" Height="25" ColumnDefinitions="Auto, Auto, *, Auto, Auto">
+            <Rectangle  Grid.Column="0"
+                   Fill="DodgerBlue"
+                   Width="30" />
+
+            <Rectangle Grid.Row="2" Grid.Column="1"
+                   Fill="Blue"
+                   Width="30" />
+            <Label Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="Black"> Programos autorius: Dovydas Araminas</Label>
+            <Rectangle Grid.Column="3"
+                       Fill="LightBlue"
+                       Width="30" />    
+
+            <Rectangle Grid.Column="4"
+                       Fill="DodgerBlue"
+                       Width="30" />
+            </Grid>
+    
+    </Grid>  
+</Window>

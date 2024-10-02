@@ -11,13 +11,19 @@ public partial class MainWindow : Window
 
     private void OmoDesnis(object sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        var newWindow = new OmoDesnis();
-        newWindow.Show();
+        var omoDesnioLangas = new OmoDesnis();
+        omoDesnioLangas.Show();
     }
 
     private void Binary(object sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        var newWindow = new Binary();
-        newWindow.Show();
+        var binaryLangas = new Binary();
+        binaryLangas.Show();
+    }
+
+    private void ASCII(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        var aSCIILangas = new ASCII();
+        aSCIILangas.Show();
     }
 }

@@ -26,6 +26,7 @@ namespace NamuDarbas.Views
 
         ~OmoDesnis()
         {
+            SkaiciavimoOperacijos = 0;
             // Dekonstruktoriu pakeičia Garbage Collector, kad atlaisvinti atmintį.
         }
 

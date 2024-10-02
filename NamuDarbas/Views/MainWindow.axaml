@@ -61,16 +61,16 @@
                 
                 <StackPanel Grid.Row="1" Grid.Column="0" >
                     <Button Margin="10" Foreground="Black" Click="OmoDesnis">Omo Dėsnis</Button>
-                    <Button Margin="10" Foreground="Black">IDK KA CIA DARAU</Button>
-                    <Button Margin="10" Foreground="Black">IDK KA CIA DARAU</Button>
-                    <Button Margin="10" Foreground="Black">IDK KA CIA DARAU</Button>
+                    <Button Margin="10" Foreground="Black">2 Mygtukas</Button>
+                    <Button Margin="10" Foreground="Black">3 Mygtukas</Button>
+                    <Button Margin="10" Foreground="Black">4 Mygtukas</Button>
                     
                 </StackPanel>
                 <StackPanel Grid.Row="1" Grid.Column="1">
-                    <Button Margin="10" Foreground="Black">IDK KA CIA DARAU</Button>
-                    <Button Margin="10" Foreground="Black">IDK KA CIA DARAU</Button>
-                    <Button Margin="10" Foreground="Black">IDK KA CIA DARAU</Button>
-                    <Button Margin="10" Foreground="Black">IDK KA CIA DARAU</Button>
+                    <Button Margin="10" Foreground="Black">1 Mygtukas</Button>
+                    <Button Margin="10" Foreground="Black">2 Mygtukas</Button>
+                    <Button Margin="10" Foreground="Black">3 Mygtukas</Button>
+                    <Button Margin="10" Foreground="Black">4 Mygtukas</Button>
                 </StackPanel>
             </Grid>
             <Grid Grid.Column="1"
@@ -81,15 +81,15 @@
                 <Label Margin="10"></Label>
                 <StackPanel Grid.Row="1" Grid.Column="0">
                     <Button Margin="10" Foreground="Black" Click="Binary">BIN, OCT, DEC, HEX</Button>
-                    <Button Margin="10" Foreground="Black">IDK KA CIA DARAU</Button>
-                    <Button Margin="10" Foreground="Black">IDK KA CIA DARAU</Button>
-                    <Button Margin="10" Foreground="Black">IDK KA CIA DARAU</Button>
+                    <Button Margin="10" Foreground="Black" Click="ASCII">ASCII-Binary</Button>
+                    <Button Margin="10" Foreground="Black">3 Mygtukas</Button>
+                    <Button Margin="10" Foreground="Black">4 Mygtukas</Button>
                 </StackPanel>
                 <StackPanel Grid.Row="1" Grid.Column="1">
-                    <Button Margin="10" Foreground="Black">IDK KA CIA DARAU</Button>
-                    <Button Margin="10" Foreground="Black">IDK KA CIA DARAU</Button>
-                    <Button Margin="10" Foreground="Black">IDK KA CIA DARAU</Button>
-                    <Button Margin="10" Foreground="Black">IDK KA CIA DARAU</Button>
+                    <Button Margin="10" Foreground="Black">1 Mygtukas</Button>
+                    <Button Margin="10" Foreground="Black">2 Mygtukas</Button>
+                    <Button Margin="10" Foreground="Black">3 Mygtukas</Button>
+                    <Button Margin="10" Foreground="Black">4 Mygtukas</Button>
                 </StackPanel>
             </Grid>
 
