@@ -33,3 +33,6 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [/home/dovydas-pc/RiderProjects/NamuDarbas/NamuDarbas/Views/OmoDesnis.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/home/dovydas-pc/RiderProjects/NamuDarbas/NamuDarbas/Views/Resistor.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

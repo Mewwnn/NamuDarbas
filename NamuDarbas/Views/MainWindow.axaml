@@ -61,7 +61,7 @@
                 
                 <StackPanel Grid.Row="1" Grid.Column="0" >
                     <Button Margin="10" Foreground="Black" Click="OmoDesnis">Omo Dėsnis</Button>
-                    <Button Margin="10" Foreground="Black">2 Mygtukas</Button>
+                    <Button Margin="10" Foreground="Black" Click="Resistor">Varžos Skaičiuotuvas</Button>
                     <Button Margin="10" Foreground="Black">3 Mygtukas</Button>
                     <Button Margin="10" Foreground="Black">4 Mygtukas</Button>
                     

@@ -26,4 +26,10 @@ public partial class MainWindow : Window
         var aSCIILangas = new ASCII();
         aSCIILangas.Show();
     }
+    
+    private void Resistor(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        var resistor = new Resistor();
+        resistor.Show();
+    }
 }

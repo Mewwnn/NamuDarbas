@@ -1,0 +1,127 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="450"
+        Width="800" Height="700"
+        x:Class="NamuDarbas.Views.Resistor"
+        Title="Resistor">
+        
+         <Grid RowDefinitions="Auto, *, Auto">
+        <!-- Virsutine dalis -->
+        <Grid Grid.Row="0"
+              Background="LightGray"
+              Height="30"
+              ColumnDefinitions="Auto, Auto, *, Auto, Auto">
+            <Rectangle Grid.Column="0"
+                       Fill="DodgerBlue"
+                       Width="30" />
+
+            <Rectangle Grid.Column="1"
+                       Fill="Blue"
+                       Width="30" />
+
+            <StackPanel Grid.Column="2"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                <Label FontWeight="Black" Foreground="Black">Varžos skaičiuotuvas</Label>
+            </StackPanel>
+
+            <Rectangle Grid.Column="3"
+                       Fill="LightBlue"
+                       Width="30" />
+
+            <Rectangle Grid.Column="4"
+                       Fill="DodgerBlue"
+                       Width="30" />
+
+        </Grid>
+        <!-- Pagrindine dalis -->
+        <Grid Grid.Row="1"
+              ColumnDefinitions="*, *"
+              Background="DarkGray"
+              ShowGridLines="False">
+            <StackPanel Grid.Column="0" Spacing="10" >
+                <TextBlock Foreground="Black" Text="Select the Number of Bands:"/>
+                <ComboBox Name="BandSelection" Width="200" 
+                          SelectedIndex="0">
+                    <ComboBoxItem>4 Bands</ComboBoxItem>
+                    <ComboBoxItem>5 Bands</ComboBoxItem>
+                    <ComboBoxItem>6 Bands</ComboBoxItem>
+                </ComboBox>
+
+                <!-- Color ComboBoxes for Resistor Bands -->
+                <TextBlock Foreground="Black" Text="Band 1 Color:"/>
+                <ComboBox Name="Band1" Width="200"/>
+
+                <TextBlock Foreground="Black" Text="Band 2 Color:"/>
+                <ComboBox Name="Band2" Width="200"/>
+
+                <TextBlock Foreground="Black" Text="Band 3 Color (optional for 5/6 bands):"/>
+                <ComboBox Name="Band3" Width="200" IsVisible="False"/>
+
+                <TextBlock Foreground="Black" Text="Multiplier Color:"/>
+                <ComboBox Name="Multiplier" Width="200"/>
+
+                <TextBlock Foreground="Black" Text="Tolerance Color:"/>
+                <ComboBox Name="Tolerance" Width="200"/>
+                
+                <TextBlock Foreground="Black" Text="Temperature Coefficient (optional for 6-band):" IsVisible="False"/>
+                <ComboBox Name="TemperatureCoefficient" Width="200" IsVisible="False"/>
+
+
+                <!-- Output Section -->
+                <TextBlock Foreground="Black" Text="Results" FontWeight="Bold"/>
+                <TextBlock Foreground="Black" Text="Resistance:"/>
+                <TextBlock Foreground="Black" Name="ResistanceValue" FontSize="14"/>
+
+                <TextBlock Foreground="Black" Text="Tolerance:"/>
+                <TextBlock Foreground="Black" Name="ToleranceValue" FontSize="14"/>
+
+                <TextBlock Foreground="Black" Text="Minimum Value:"/>
+                <TextBlock Foreground="Black" Name="MinValue" FontSize="14"/>
+
+                <TextBlock Foreground="Black" Text="Maximum Value:"/>
+                <TextBlock Foreground="Black" Name="MaxValue" FontSize="14"/>
+                
+                <TextBlock Foreground="Black" Text="Temperature Coefficient:"/>
+                <TextBlock Foreground="Black" Name="TemperatureCoefficientValue" FontSize="14"/>
+                
+            </StackPanel>
+                <!-- Graphical Representation of Resistor -->
+                <Border Grid.Column="1" BorderBrush="Black" BorderThickness="2" Padding="5" Margin="10">
+                    <StackPanel>
+                        <Rectangle Name="Band1Rect" Width="200" Height="20"/>
+                        <Rectangle Name="Band2Rect" Width="200" Height="20"/>
+                        <Rectangle Name="Band3Rect" Width="200" Height="20" IsVisible="False"/>
+                        <Rectangle Name="MultiplierRect" Width="200" Height="20"/>
+                        <Rectangle Name="ToleranceRect" Width="200" Height="20"/>
+                        <Rectangle Name="TemperatureRect" Width="200" Height="20" IsVisible="False"/>
+                    </StackPanel>
+                </Border>
+            
+            
+
+        </Grid>
+        <!-- Apatine dalis -->
+        <Grid Grid.Row="2" Background="Gray" Height="25" ColumnDefinitions="Auto, Auto, *, Auto, Auto">
+            <Rectangle  Grid.Column="0"
+                   Fill="DodgerBlue"
+                   Width="30" />
+
+            <Rectangle Grid.Row="2" Grid.Column="1"
+                   Fill="Blue"
+                   Width="30" />
+            <Label Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="Black"> Programos autorius: Dovydas Araminas</Label>
+            <Rectangle Grid.Column="3"
+                       Fill="LightBlue"
+                       Width="30" />    
+
+            <Rectangle Grid.Column="4"
+                       Fill="DodgerBlue"    
+                       Width="30" />
+            </Grid>
+    
+    </Grid>  
+        
+</Window>
