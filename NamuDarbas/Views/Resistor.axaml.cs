@@ -1,3 +1,4 @@
+using System;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
@@ -24,6 +25,7 @@ namespace NamuDarbas.Views
         public Resistor()
         {
             InitializeComponent();
+            // Duomenu struktura is System.Collections.Generic
             _colorBands = new List<Rectangle>();
 
             // Initialize control references
@@ -50,15 +52,20 @@ namespace NamuDarbas.Views
 
         private void OnBandTypeChanged(object sender, SelectionChangedEventArgs e)
         {
-            var comboBox = sender as ComboBox;
-            int bandCount = comboBox?.SelectedIndex switch
-            {
-                0 => 4,
-                1 => 5,
-                2 => 6,
-                _ => 4
-            };
-            SetupUI(bandCount);
+            if (_bandTypeComboBox != null)
+                //Lambda funkcija
+                _bandTypeComboBox.SelectionChanged += (sender, e) =>
+                {
+                    var comboBox = sender as ComboBox;
+                    int bandCount = comboBox?.SelectedIndex switch
+                    {
+                        0 => 4,
+                        1 => 5,
+                        2 => 6,
+                        _ => 4
+                    };
+                    SetupUI(bandCount);
+                };
         }
 
         private void SetupUI(int bandCount)
@@ -189,9 +196,10 @@ namespace NamuDarbas.Views
                     }
 
                     double tolerance = ResistorColours.Tolerances[selectedColors[bandCount - 1]];
-
-                    double minResistance = value * (1 - tolerance / 100);
-                    double maxResistance = value * (1 + tolerance / 100);
+                    // Lambda Funkcija
+                    Func<double, double, double> calculateRange = (val, tol) => val * (1 + tol / 100);
+                    double minResistance = calculateRange(value, -tolerance);
+                    double maxResistance = calculateRange(value, tolerance);
 
                     int tempCoeff = 0;
                     if (bandCount == 6 && selectedColors.Count > 4)

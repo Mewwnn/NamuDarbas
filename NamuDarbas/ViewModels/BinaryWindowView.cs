@@ -95,7 +95,7 @@ public class BinaryWindowView : INotifyPropertyChanged
     }
 
     private void KonvertuotiIsDec(string dec)
-    {
+    {   // out argumentas
         if (int.TryParse(dec, out int decVerte))
         {
             AtnaujintiVertes(decVerte);

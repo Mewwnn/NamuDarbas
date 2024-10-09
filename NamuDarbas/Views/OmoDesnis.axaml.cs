@@ -1,10 +1,4 @@
-using System;
-using System.Net.Mime;
-using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
-using NamuDarbas.ViewModels;
-using ReactiveUI;
 
 namespace NamuDarbas.Views
 {
