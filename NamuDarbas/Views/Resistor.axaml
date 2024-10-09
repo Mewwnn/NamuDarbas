@@ -1,11 +1,10 @@
-<Window xmlns="https://github.com/avaloniaui"
+<UserControl xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="700"
         Width="800" Height="700"
-        x:Class="NamuDarbas.Views.Resistor"
-        Title="Resistor">
+        x:Class="NamuDarbas.Views.Resistor">
         
          <Grid RowDefinitions="Auto, *, Auto">
         <!-- Virsutine dalis -->
@@ -41,64 +40,50 @@
               ColumnDefinitions="*, *"
               Background="DarkGray"
               ShowGridLines="False">
-            <StackPanel Grid.Column="0" Spacing="10" >
-                <TextBlock Foreground="Black" Text="Select the Number of Bands:"/>
-                <ComboBox Name="BandSelection" Width="200" 
-                          SelectedIndex="0">
-                    <ComboBoxItem>4 Bands</ComboBoxItem>
-                    <ComboBoxItem>5 Bands</ComboBoxItem>
-                    <ComboBoxItem>6 Bands</ComboBoxItem>
-                </ComboBox>
-
-                <!-- Color ComboBoxes for Resistor Bands -->
-                <TextBlock Foreground="Black" Text="Band 1 Color:"/>
-                <ComboBox Name="Band1" Width="200"/>
-
-                <TextBlock Foreground="Black" Text="Band 2 Color:"/>
-                <ComboBox Name="Band2" Width="200"/>
-
-                <TextBlock Foreground="Black" Text="Band 3 Color (optional for 5/6 bands):"/>
-                <ComboBox Name="Band3" Width="200" IsVisible="False"/>
-
-                <TextBlock Foreground="Black" Text="Multiplier Color:"/>
-                <ComboBox Name="Multiplier" Width="200"/>
-
-                <TextBlock Foreground="Black" Text="Tolerance Color:"/>
-                <ComboBox Name="Tolerance" Width="200"/>
+             <Grid RowDefinitions="Auto,*">
+        <ComboBox x:Name="BandTypeComboBox" Grid.Row="0" Margin="10"
+                  SelectedIndex="0">
+            <ComboBoxItem>4 Band Resistor</ComboBoxItem>
+            <ComboBoxItem>5 Band Resistor</ComboBoxItem>
+            <ComboBoxItem>6 Band Resistor</ComboBoxItem>
+        </ComboBox>
+        
+        <Grid Grid.Row="1" ColumnDefinitions="*,*">
+            <StackPanel Grid.Column="0" Margin="10">
+                <Canvas x:Name="ResistorCanvas" Width="0" Height="100">
+                    <!-- Resistor body will be drawn here -->
+                    <Rectangle Canvas.Left="50" Canvas.Top="40"
+                             Width="600" Height="150"
+                             Fill="Beige"/>
+                </Canvas>
                 
-                <TextBlock Foreground="Black" Text="Temperature Coefficient (optional for 6-band):" IsVisible="False"/>
-                <ComboBox Name="TemperatureCoefficient" Width="200" IsVisible="False"/>
-
-
-                <!-- Output Section -->
-                <TextBlock Foreground="Black" Text="Results" FontWeight="Bold"/>
-                <TextBlock Foreground="Black" Text="Resistance:"/>
-                <TextBlock Foreground="Black" Name="ResistanceValue" FontSize="14"/>
-
-                <TextBlock Foreground="Black" Text="Tolerance:"/>
-                <TextBlock Foreground="Black" Name="ToleranceValue" FontSize="14"/>
-
-                <TextBlock Foreground="Black" Text="Minimum Value:"/>
-                <TextBlock Foreground="Black" Name="MinValue" FontSize="14"/>
-
-                <TextBlock Foreground="Black" Text="Maximum Value:"/>
-                <TextBlock Foreground="Black" Name="MaxValue" FontSize="14"/>
-                
-                <TextBlock Foreground="Black" Text="Temperature Coefficient:"/>
-                <TextBlock Foreground="Black" Name="TemperatureCoefficientValue" FontSize="14"/>
-                
+                <StackPanel x:Name="ColorSelectors" Orientation="Horizontal"
+                           Spacing="10" Margin="60,40,0,0">
+                    <!-- Color ComboBoxes will be added dynamically -->
+                </StackPanel>
             </StackPanel>
-                <!-- Graphical Representation of Resistor -->
-                <Border Grid.Column="1" BorderBrush="Black" BorderThickness="2" Padding="5" Margin="10">
-                    <StackPanel>
-                        <Rectangle Name="Band1Rect" Width="200" Height="20"/>
-                        <Rectangle Name="Band2Rect" Width="200" Height="20"/>
-                        <Rectangle Name="Band3Rect" Width="200" Height="20" IsVisible="False"/>
-                        <Rectangle Name="MultiplierRect" Width="200" Height="20"/>
-                        <Rectangle Name="ToleranceRect" Width="200" Height="20"/>
-                        <Rectangle Name="TemperatureRect" Width="200" Height="20" IsVisible="False"/>
-                    </StackPanel>
-                </Border>
+            
+            <StackPanel Grid.Column="1" Margin="10">
+                <TextBlock Foreground="Black" Text="Results:" FontSize="20"  FontWeight="Bold" Margin="-200,200,0,10"/>
+                <Grid ColumnDefinitions="Auto,*" RowDefinitions="*,*,*,*,*">
+                    <TextBlock  Foreground="Black" FontSize="20" Grid.Row="0" Grid.Column="0" Margin="-200,0,0,0" Text="Resistance:"/>
+                    <TextBlock Foreground="Black"  FontSize="20" Grid.Row="0" Grid.Column="1" x:Name="ResistanceText"/>
+                    
+                    <TextBlock Foreground="Black"  FontSize="20" Grid.Row="1" Grid.Column="0" Margin="-200,0,0,0" Text="Tolerance:"/>
+                    <TextBlock Foreground="Black"  FontSize="20" Grid.Row="1" Grid.Column="1" x:Name="ToleranceText"/>
+                    
+                    <TextBlock Foreground="Black"  FontSize="20" Grid.Row="2" Grid.Column="1" x:Name="MinResistanceText"/>
+                    <TextBlock Foreground="Black"  FontSize="20" Grid.Row="2" Grid.Column="0" Margin="-200,0,0,0" Text="Min Resistance:"/>
+                                                                   
+                    <TextBlock Foreground="Black"  FontSize="20" Grid.Row="3" Grid.Column="0" Margin="-200,0,0,0" Text="Max Resistance:"/>
+                    <TextBlock Foreground="Black"  FontSize="20" Grid.Row="3" Grid.Column="1" x:Name="MaxResistanceText"/>
+                    
+                    <TextBlock Foreground="Black"  FontSize="20" Grid.Row="4" Grid.Column="0" Margin="-200,0,0,0" Text="Temp Coefficient:"/>
+                    <TextBlock Foreground="Black"  FontSize="20" Grid.Row="4" Grid.Column="1" x:Name="TempCoeffText"/>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </Grid>
             
             
 
@@ -124,4 +109,4 @@
     
     </Grid>  
         
-</Window>
+</UserControl>

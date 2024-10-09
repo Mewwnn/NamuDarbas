@@ -27,9 +27,15 @@ public partial class MainWindow : Window
         aSCIILangas.Show();
     }
     
-    private void Resistor(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+    public void Resistor(object sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        var resistor = new Resistor();
-        resistor.Show();
+        var resistorWindow = new Window
+        {
+            Title = "Resistor Calculator",
+            Content = new Resistor(),
+            Width = 800,
+            Height = 700
+        };
+        resistorWindow.Show();
     }
 }

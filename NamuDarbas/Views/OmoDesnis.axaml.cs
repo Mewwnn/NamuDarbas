@@ -27,7 +27,6 @@ namespace NamuDarbas.Views
         ~OmoDesnis()
         {
             SkaiciavimoOperacijos = 0;
-            // Dekonstruktoriu pakeičia Garbage Collector, kad atlaisvinti atmintį.
         }
 
         private void PaspaustasSkaiciuoti(object sender, Avalonia.Interactivity.RoutedEventArgs e)
