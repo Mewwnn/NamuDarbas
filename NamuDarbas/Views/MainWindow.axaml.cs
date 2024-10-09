@@ -21,10 +21,10 @@ public partial class MainWindow : Window
         binaryLangas.Show();
     }
 
-    private void ASCII(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+    private void Ascii(object sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        var aSCIILangas = new ASCII();
-        aSCIILangas.Show();
+        var asciiLangas = new ASCII();
+        asciiLangas.Show();
     }
     
     public void Resistor(object sender, Avalonia.Interactivity.RoutedEventArgs e)

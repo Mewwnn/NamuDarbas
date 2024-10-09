@@ -1,44 +1,43 @@
-using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using System.Linq;
 using System.Collections.Generic;
 using Avalonia.Controls.Shapes;
+using NamuDarbas.Utils.Formating;
 using NamuDarbas.Utils.ResistorColours;
 
 namespace NamuDarbas.Views
 {
     public partial class Resistor : UserControl
     {
-        private ComboBox bandTypeComboBox;
-        private Canvas resistorCanvas;
-        private StackPanel colorSelectors;
-        private TextBlock resistanceText;
-        private TextBlock toleranceText;
-        private TextBlock minResistanceText;
-        private TextBlock maxResistanceText;
-        private TextBlock tempCoeffText;
-        private List<Rectangle> colorBands;
+        private readonly ComboBox? _bandTypeComboBox;
+        private readonly Canvas? _resistorCanvas;
+        private readonly StackPanel? _colorSelectors;
+        private readonly TextBlock? _resistanceText;
+        private readonly TextBlock? _toleranceText;
+        private readonly TextBlock? _minResistanceText;
+        private readonly TextBlock? _maxResistanceText;
+        private readonly TextBlock? _tempCoeffText;
+        private readonly List<Rectangle> _colorBands;
 
         public Resistor()
         {
             InitializeComponent();
-            colorBands = new List<Rectangle>();
+            _colorBands = new List<Rectangle>();
 
             // Initialize control references
-            bandTypeComboBox = this.Find<ComboBox>("BandTypeComboBox");
-            resistorCanvas = this.Find<Canvas>("ResistorCanvas");
-            colorSelectors = this.Find<StackPanel>("ColorSelectors");
-            resistanceText = this.Find<TextBlock>("ResistanceText");
-            toleranceText = this.Find<TextBlock>("ToleranceText");
-            minResistanceText = this.Find<TextBlock>("MinResistanceText");
-            maxResistanceText = this.Find<TextBlock>("MaxResistanceText");
-            tempCoeffText = this.Find<TextBlock>("TempCoeffText");
+            _bandTypeComboBox = this.Find<ComboBox>("BandTypeComboBox");
+            _resistorCanvas = this.Find<Canvas>("ResistorCanvas");
+            _colorSelectors = this.Find<StackPanel>("ColorSelectors");
+            _resistanceText = this.Find<TextBlock>("ResistanceText");
+            _toleranceText = this.Find<TextBlock>("ToleranceText");
+            _minResistanceText = this.Find<TextBlock>("MinResistanceText");
+            _maxResistanceText = this.Find<TextBlock>("MaxResistanceText");
+            _tempCoeffText = this.Find<TextBlock>("TempCoeffText");
 
             // Set up event handlers
-            bandTypeComboBox.SelectionChanged += OnBandTypeChanged;
+            if (_bandTypeComboBox != null) _bandTypeComboBox.SelectionChanged += OnBandTypeChanged!;
 
             // Initial setup
             SetupUI(4);
@@ -65,9 +64,9 @@ namespace NamuDarbas.Views
         private void SetupUI(int bandCount)
         {
             // Clear existing bands and selectors
-            colorBands.Clear();
-            resistorCanvas.Children.Clear();
-            colorSelectors.Children.Clear();
+            _colorBands.Clear();
+            _resistorCanvas?.Children.Clear();
+            _colorSelectors?.Children.Clear();
 
             // Add resistor body
             var body = new Rectangle
@@ -78,7 +77,7 @@ namespace NamuDarbas.Views
             };
             Canvas.SetLeft(body, 50);
             Canvas.SetTop(body, 35);
-            resistorCanvas.Children.Add(body);
+            _resistorCanvas?.Children.Add(body);
 
             // Calculate band spacing
             double startX = 70; // Increased from 50 to give more space at the start
@@ -98,8 +97,8 @@ namespace NamuDarbas.Views
                 double xPosition = startX + (i * spacing);
                 Canvas.SetLeft(band, xPosition);
                 Canvas.SetTop(band, 35);
-                resistorCanvas.Children.Add(band);
-                colorBands.Add(band);
+                _resistorCanvas?.Children.Add(band);
+                _colorBands.Add(band);
 
                 var selector = new ComboBox
                 {
@@ -107,118 +106,119 @@ namespace NamuDarbas.Views
                     Tag = i
                 };
 
-                // Add appropriate colors based on band position
-                if (i < bandCount - 2)
-                {
-                    foreach (var color in ResistorColours.ColorDigits.Keys)
-                        selector.Items.Add(color);
-                }
-                else if (i == bandCount - 2)
-                {
-                    foreach (var color in ResistorColours.Multipliers.Keys)
-                        selector.Items.Add(color);
-                }
-                else if (i == bandCount - 1)
-                {
-                    foreach (var color in ResistorColours.Tolerances.Keys)
-                        selector.Items.Add(color);
-                }
+                PopulateComboBox(selector, i, bandCount);
 
                 selector.SelectedIndex = 0;
-                selector.SelectionChanged += ColorSelector_SelectionChanged;
-                colorSelectors.Children.Add(selector);
+                selector.SelectionChanged += ColorSelector_SelectionChanged!;
+                _colorSelectors?.Children.Add(selector);
             }
 
             UpdateColorBands();
         }
 
+        private void PopulateComboBox(ComboBox selector, int bandPosition, int bandCount)
+        {
+            IEnumerable<string> colors = bandPosition switch
+            {
+                var n when n < bandCount - 1 => ResistorColours.ColorDigits.Keys,
+
+                var n when n == bandCount - 2 => ResistorColours.Multipliers.Keys,
+
+                var n when n == bandCount - 1 => ResistorColours.Tolerances.Keys,
+
+                4 when bandCount == 6 => ResistorColours.TempCoefficients.Keys,
+
+                _ => Enumerable.Empty<string>()
+            };
+            foreach (var color in colors)
+            {
+                selector.Items.Add(color);
+            }
+        }
+
+        private void UpdateColorBands()
+        {
+            var selectors = _colorSelectors?.Children.OfType<ComboBox>().ToList();
+
+            if (selectors != null)
+                for (int i = 0; i < selectors.Count && i < _colorBands.Count; i++)
+                {
+                    string colorName = selectors[i].SelectedItem?.ToString() ?? "Black";
+                    if (ResistorColours.ColorValues.TryGetValue(colorName, out Color color))
+                    {
+                        _colorBands[i].Fill = new SolidColorBrush(color);
+                    }
+                }
+        }
         private void ColorSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             UpdateColorBands();
             CalculateResistance();
         }
 
-        private void UpdateColorBands()
-        {
-            var selectors = colorSelectors.Children.OfType<ComboBox>().ToList();
-            
-            for (int i = 0; i < selectors.Count && i < colorBands.Count; i++)
-            {
-                string colorName = selectors[i].SelectedItem?.ToString() ?? "Black";
-                if (ResistorColours.ColorValues.TryGetValue(colorName, out Color color))
-                {
-                    colorBands[i].Fill = new SolidColorBrush(color);
-                }
-            }
-        }
-
         private void CalculateResistance()
         {
-            var selectors = colorSelectors.Children.OfType<ComboBox>().ToList();
-            int bandCount = selectors.Count;
-            
-            // Get values from selectors
-            List<string> selectedColors = selectors.Select(cb => cb.SelectedItem?.ToString() ?? "Black").ToList();
-            
-            try
+            var selectors = _colorSelectors?.Children.OfType<ComboBox>().ToList();
+            if (selectors != null)
             {
-                // Calculate resistance
-                double value = 0;
-                if (bandCount >= 4)
-                {
-                    if (bandCount == 4)
-                    {
-                        value = (ResistorColours.ColorDigits[selectedColors[0]] * 10 + 
-                                ResistorColours.ColorDigits[selectedColors[1]]) *
-                                ResistorColours.Multipliers[selectedColors[2]];
-                    }
-                    else if (bandCount == 5 || bandCount == 6)
-                    {
-                        value = (ResistorColours.ColorDigits[selectedColors[0]] * 100 +
-                                ResistorColours.ColorDigits[selectedColors[1]] * 10 +
-                                ResistorColours.ColorDigits[selectedColors[2]]) *
-                                ResistorColours.Multipliers[selectedColors[3]];
-                    }
-                }
-                
-                // Get tolerance
-                double tolerance = ResistorColours.Tolerances[selectedColors[bandCount - 1]];
-                
-                // Calculate min and max resistance
-                double minResistance = value * (1 - tolerance / 100);
-                double maxResistance = value * (1 + tolerance / 100);
-                
-                // Get temperature coefficient if 6-band
-                int tempCoeff = 0;
-                if (bandCount == 6 && selectedColors.Count > 4)
-                {
-                    tempCoeff = ResistorColours.TempCoefficients.GetValueOrDefault(selectedColors[4], 0);
-                }
-                
-                // Update UI
-                resistanceText.Text = $"{FormatValue(value)} Ω";
-                toleranceText.Text = $"±{tolerance}%";
-                minResistanceText.Text = $"{FormatValue(minResistance)} Ω";
-                maxResistanceText.Text = $"{FormatValue(maxResistance)} Ω";
-                tempCoeffText.Text = bandCount == 6 ? $"{tempCoeff} ppm/°C" : "N/A";
-            }
-            catch
-            {
-                // Handle any calculation errors
-                resistanceText.Text = "Error";
-                toleranceText.Text = "Error";
-                minResistanceText.Text = "Error";
-                maxResistanceText.Text = "Error";
-                tempCoeffText.Text = "Error";
-            }
-        }
+                int bandCount = selectors.Count;
 
-        private string FormatValue(double value)
-        {
-            if (value >= 1e9) return $"{value / 1e9:F2}G";
-            if (value >= 1e6) return $"{value / 1e6:F2}M";
-            if (value >= 1e3) return $"{value / 1e3:F2}k";
-            return $"{value:F2}";
+                try
+                {
+                    // Get values from selectors
+                    List<string> selectedColors = selectors.Select(cb => cb.SelectedItem?.ToString() ?? "Black").ToList();
+
+                    // Calculate resistance
+                    double value = 0;
+
+                    switch (bandCount)
+                    {
+                        case 4:
+                            value = (ResistorColours.ColorDigits[selectedColors[0]] * 10 + 
+                                     ResistorColours.ColorDigits[selectedColors[1]]) *
+                                    ResistorColours.Multipliers[selectedColors[2]];
+                            break;
+
+                        case 5:
+                        case 6:
+                            value = (ResistorColours.ColorDigits[selectedColors[0]] * 100 +
+                                     ResistorColours.ColorDigits[selectedColors[1]] * 10 +
+                                     ResistorColours.ColorDigits[selectedColors[2]]) *
+                                    ResistorColours.Multipliers[selectedColors[3]];
+                            break;
+                    }
+
+                    double tolerance = ResistorColours.Tolerances[selectedColors[bandCount - 1]];
+
+                    double minResistance = value * (1 - tolerance / 100);
+                    double maxResistance = value * (1 + tolerance / 100);
+
+                    int tempCoeff = 0;
+                    if (bandCount == 6 && selectedColors.Count > 4)
+                    {
+                        tempCoeff = ResistorColours.TempCoefficients[selectedColors[4]];
+                    }
+
+                    var resistance = new ResistanceFormat(value);
+                    var minRes = new ResistanceFormat(minResistance);
+                    var maxRes = new ResistanceFormat(maxResistance);
+                    
+                    //IFormattable
+                    if (_resistanceText != null) _resistanceText.Text = resistance.ToString();
+                    if (_toleranceText != null) _toleranceText.Text = $"±{tolerance}%";
+                    if (_minResistanceText != null) _minResistanceText.Text = minRes.ToString();
+                    if (_maxResistanceText != null) _maxResistanceText.Text = maxRes.ToString();
+                    if (_tempCoeffText != null) _tempCoeffText.Text = bandCount == 6 ? $"{tempCoeff} ppm/°C" : "N/A";
+                }
+                catch
+                {
+                    if (_resistanceText != null) _resistanceText.Text = "Error";
+                    if (_toleranceText != null) _toleranceText.Text = "Error";
+                    if (_minResistanceText != null) _minResistanceText.Text = "Error";
+                    if (_maxResistanceText != null) _maxResistanceText.Text = "Error";
+                    if (_tempCoeffText != null) _tempCoeffText.Text = "Error";
+                }
+            }
         }
     }
 }
