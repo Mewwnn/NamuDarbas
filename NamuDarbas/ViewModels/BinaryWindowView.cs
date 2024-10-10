@@ -70,28 +70,14 @@ public class BinaryWindowView : INotifyPropertyChanged
     }
     private void KonvertuotiIsBin(string bin)
     {
-        try
-        {
             int dec = Convert.ToInt32(bin, 2);
             AtnaujintiVertes(dec);
-        }
-        catch
-        {
-            
-        }
     }
 
     private void KonvertuotiIsOct(string oct)
     {
-        try
-        {
             int dec = Convert.ToInt32(oct, 8);
             AtnaujintiVertes(dec);
-        }
-        catch
-        {
-            
-        }
     }
 
     private void KonvertuotiIsDec(string dec)

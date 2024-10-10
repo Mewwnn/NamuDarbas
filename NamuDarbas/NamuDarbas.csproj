@@ -26,5 +26,6 @@
 
     <ItemGroup>
       <Compile Remove="ViewModels\ResistorViewModel.cs" />
+      <Compile Remove="ViewModels\OmoDesnioView.cs" />
     </ItemGroup>
 </Project>

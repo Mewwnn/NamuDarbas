@@ -85,10 +85,9 @@ namespace NamuDarbas.Views
             Canvas.SetLeft(body, 50);
             Canvas.SetTop(body, 35);
             _resistorCanvas?.Children.Add(body);
-
-            // Calculate band spacing
-            double startX = 70; // Increased from 50 to give more space at the start
-            double spacing = 220.0 / (bandCount - 1); // Distribute bands evenly across the resistor
+            
+            double startX = 70; 
+            double spacing = 220.0 / (bandCount - 1);
 
             // Add color bands and selectors
             for (int i = 0; i < bandCount; i++)

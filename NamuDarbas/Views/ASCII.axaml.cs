@@ -1,11 +1,8 @@
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using System;
 using System.Linq;
 using System.Text;
-using Avalonia.Markup.Xaml;
-using Avalonia.Metadata;
 
 namespace NamuDarbas.Views;
 
@@ -87,6 +84,5 @@ public partial class ASCII : Window
             Ivedimas.Text = "";
         }
     }
-    
     
 }
