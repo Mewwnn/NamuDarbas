@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NamuDarbas")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cad98961d6e98aad9b41d220d76daa8892250e71")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a7bd7f68a6272d6b8863e4ee9f359dbdb351ec6c")]
 [assembly: System.Reflection.AssemblyProductAttribute("NamuDarbas")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NamuDarbas")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

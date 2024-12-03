@@ -86,8 +86,8 @@
                     <Button Margin="10" Foreground="Black">4 Mygtukas</Button>
                 </StackPanel>
                 <StackPanel Grid.Row="1" Grid.Column="1">
-                    <Button Margin="10" Foreground="Black">1 Mygtukas</Button>
-                    <Button Margin="10" Foreground="Black">2 Mygtukas</Button>
+                    <Button Margin="10" Foreground="Black" Click="Encryption">Encryption</Button>
+                    <Button Margin="10" Foreground="Black" Click="Decryption">Decryption</Button>
                     <Button Margin="10" Foreground="Black">3 Mygtukas</Button>
                     <Button Margin="10" Foreground="Black">4 Mygtukas</Button>
                 </StackPanel>

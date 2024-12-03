@@ -3,11 +3,18 @@
   <component name="AvaloniaProject">
     <option name="projectPerEditor">
       <map>
+        <entry key="NamuDarbas/App.axaml" value="NamuDarbas/NamuDarbas.csproj" />
         <entry key="NamuDarbas/Views/ASCII.axaml" value="NamuDarbas/NamuDarbas.csproj" />
         <entry key="NamuDarbas/Views/Binary.axaml" value="NamuDarbas/NamuDarbas.csproj" />
+        <entry key="NamuDarbas/Views/Decryption.axaml" value="NamuDarbas/NamuDarbas.csproj" />
+        <entry key="NamuDarbas/Views/Encryption.axaml" value="NamuDarbas/NamuDarbas.csproj" />
         <entry key="NamuDarbas/Views/MainWindow.axaml" value="NamuDarbas/NamuDarbas.csproj" />
         <entry key="NamuDarbas/Views/OmoDesnis.axaml" value="NamuDarbas/NamuDarbas.csproj" />
         <entry key="NamuDarbas/Views/Resistor.axaml" value="NamuDarbas/NamuDarbas.csproj" />
+        <entry key="NamuDarbas/Views/SignalGen.axaml" value="NamuDarbas/NamuDarbas.csproj" />
+        <entry key="NamuDarbas/Views/SignalGenerator.axaml" value="NamuDarbas/NamuDarbas.csproj" />
+        <entry key="NamuDarbas/Views/SingalGenerator.axaml" value="NamuDarbas/NamuDarbas.csproj" />
+        <entry key="NamuDarbas/Views/Trigonometry.axaml" value="NamuDarbas/NamuDarbas.csproj" />
       </map>
     </option>
   </component>

@@ -1,0 +1,80 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="NamuDarbas.Views.Decryption"
+        Title="Decryption">
+    <Grid RowDefinitions="Auto, *, Auto">
+        <!-- Virsutine dalis -->
+        <Grid Grid.Row="0"
+              Background="LightGray"
+              Height="30"
+              ColumnDefinitions="Auto, Auto, *, Auto, Auto">
+            <Rectangle Grid.Column="0"
+                       Fill="DodgerBlue"
+                       Width="30" />
+
+            <Rectangle Grid.Column="1"
+                       Fill="Blue"
+                       Width="30" />
+
+            <StackPanel Grid.Column="2"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                <Label FontWeight="Black" Foreground="Black">Decryption</Label>
+            </StackPanel>
+
+            <Rectangle Grid.Column="3"
+                       Fill="LightBlue"
+                       Width="30" />
+
+            <Rectangle Grid.Column="4"
+                       Fill="DodgerBlue"
+                       Width="30" />
+
+        </Grid>
+        <!-- Pagrindine dalis -->
+        <Grid Grid.Row="1"
+              ColumnDefinitions="*, *"
+              Background="DarkGray"
+              ShowGridLines="False">
+            <StackPanel Margin="10">
+                <TextBlock Text="Select Encryption Algorithm:" Margin="0,0,0,10"/>
+                <ComboBox Name="AlgorithmComboBox" Margin="0,0,0,10">
+                    <ComboBoxItem Content="DES"/>
+                    <ComboBoxItem Content="Triple DES"/>
+                    <ComboBoxItem Content="AES"/>
+                    <ComboBoxItem Content="RSA"/>
+                </ComboBox>
+
+                <TextBlock Text="Encrypted Message ID:" Margin="0,0,0,10"/>
+                <TextBox Name="MessageIdTextBox" Margin="0,0,0,10"/>
+
+                <Button Name="DecryptButton" Content="Decrypt" Click="DecryptButton_Click" Margin="0,0,0,10"/>
+        
+                <TextBlock Text="Decrypted Message:" Margin="0,0,0,5"/>
+                <TextBox Name="DecryptedMessageTextBox" IsReadOnly="True"/>
+            </StackPanel>
+        </Grid>
+        <!-- Apatine dalis -->
+        <Grid Grid.Row="2" Background="Gray" Height="25" ColumnDefinitions="Auto, Auto, *, Auto, Auto">
+            <Rectangle  Grid.Column="0"
+                   Fill="DodgerBlue"
+                   Width="30" />
+
+            <Rectangle Grid.Row="2" Grid.Column="1"
+                   Fill="Blue"
+                   Width="30" />
+            <Label Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="Black"> Programos autorius: Dovydas Araminas</Label>
+            <Rectangle Grid.Column="3"
+                       Fill="LightBlue"
+                       Width="30" />    
+
+            <Rectangle Grid.Column="4"
+                       Fill="DodgerBlue"
+                       Width="30" />
+            </Grid>
+    
+    </Grid>  
+</Window>

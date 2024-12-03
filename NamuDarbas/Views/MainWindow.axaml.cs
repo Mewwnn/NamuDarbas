@@ -26,7 +26,7 @@ public partial class MainWindow : Window
         var asciiLangas = new ASCII();
         asciiLangas.Show();
     }
-    
+
     public void Resistor(object sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         var resistorWindow = new Window
@@ -37,5 +37,17 @@ public partial class MainWindow : Window
             Height = 700
         };
         resistorWindow.Show();
+    }
+
+    private void Encryption(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        var encryption = new Encryption();
+        encryption.Show();
+    }
+    
+    private void Decryption(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        var decryption = new Decryption();
+        decryption.Show();
     }
 }
