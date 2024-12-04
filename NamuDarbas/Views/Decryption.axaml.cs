@@ -3,6 +3,7 @@ using Avalonia.Interactivity;
 using System;
 using System.Security.Cryptography;
 using System.Text;
+using NamuDarbas.Exceptions;
 using NamuDarbas.Models;
 
 namespace NamuDarbas.Views
@@ -54,8 +55,7 @@ namespace NamuDarbas.Views
                         }
                         else
                         {
-                            await ShowMessageDialog("Error", "Invalid Message ID.");
-                        }
+                            throw new InvalidAlgorithmException($"Algorithm '{selectedAlgorithm}' is not supported for decryption.");                        }
                     }
                     else
                     {
@@ -67,6 +67,10 @@ namespace NamuDarbas.Views
                     await ShowMessageDialog("Error", "Please select an algorithm and provide a valid message ID.");
                 }
             }
+            catch (InvalidAlgorithmException ex)
+            {
+                await ShowMessageDialog("Algorithm Error", ex.Message);
+            }
             catch (Exception ex)
             {
                 await ShowMessageDialog("Decryption Error", $"An error occurred during decryption: {ex.Message}");
@@ -77,7 +81,12 @@ namespace NamuDarbas.Views
         {
             using (var context = new EncryptionContext())
             {
-                return context.Keys.Find(id)!;
+                var keyInfo = context.Keys.Find(id);
+                if (keyInfo == null)
+                {
+                    throw new KeyNotFoundException($"The key with ID '{id}' was not found in the database.");
+                }
+                return keyInfo;
             }
         }
 

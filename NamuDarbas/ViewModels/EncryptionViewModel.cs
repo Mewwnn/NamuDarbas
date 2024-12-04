@@ -3,6 +3,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using NamuDarbas.Exceptions;
 using NamuDarbas.Models;
 
 namespace NamuDarbas.ViewModels
@@ -26,7 +27,7 @@ namespace NamuDarbas.ViewModels
                 case "RSA":
                     return EncryptWithRSA(plainText);
                 default:
-                    throw new NotImplementedException("Unknown algorithm");
+                    throw new InvalidAlgorithmException($"The algorithm '{algorithm}' is not supported. Please choose a valid algorithm such as AES, DES, Triple DES, or RSA.");
             }
         }
         private string EncryptWithAES(string plainText)
@@ -302,6 +303,7 @@ namespace NamuDarbas.ViewModels
                 throw;
             }
         }
+        // Testavimui
         public KeyInfo GetKeyInfo(int id)
         {
             using (var context = new EncryptionContext())
